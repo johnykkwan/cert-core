@@ -5,11 +5,11 @@ from enum import Enum
 CHAIN_BITCOIN_MAINNET = 'bitcoinMainnet'
 CHAIN_BITCOIN_REGTEST = 'bitcoinRegtest'
 CHAIN_BITCOIN_TESTNET = 'bitcoinTestnet'
-CHAIN_BSV_MAINNET = 'bsvMainnet'
-CHAIN_BSV_TESTNET = 'bsvTestnet'
 CHAIN_ETHEREUM_MAINNET = 'ethereumMainnet'
 CHAIN_ETHEREUM_ROPSTEN = 'ethereumRopsten'
 CHAIN_MOCKCHAIN = 'mockchain'
+CHAIN_BSV_MAINNET = 'bsvMainnet'
+CHAIN_BSV_TESTNET = 'bsvTestnet'
 
 # system value for chains, including specific network. Used in config files for example
 SYS_CHAIN_BITCOIN_MAINNET = 'bitcoin_mainnet'
@@ -18,11 +18,14 @@ SYS_CHAIN_BITCOIN_TESTNET = 'bitcoin_testnet'
 SYS_CHAIN_ETHEREUM_MAINNET = 'ethereum_mainnet'
 SYS_CHAIN_ETHEREUM_ROPSTEN = 'ethereum_ropsten'
 SYS_CHAIN_MOCKCHAIN = 'mockchain'
+SYS_CHAIN_BSV_MAINNET = 'bsv_mainnet'
+SYS_CHAIN_BSV_TESTNET = 'bsv_testnet'
 
 # signature type, part of signature suite standard
 CHAIN_TYPE_BITCOIN = 'BTCOpReturn'
 CHAIN_TYPE_ETHEREUM = 'ETHData'
 CHAIN_TYPE_MOCK = 'Mock'
+CHAIN_TYPE_BSV = 'BSVOpReturn'
 
 # system config values, used for pycoin
 SYS_NETWORK_BITCOIN_REGTEST = 'regtest'
@@ -44,6 +47,7 @@ class BlockchainType(Enum):
     bitcoin = 0, CHAIN_TYPE_BITCOIN
     ethereum = 1, CHAIN_TYPE_ETHEREUM
     mock = 2, CHAIN_TYPE_MOCK
+    bsv = 3, CHAIN_TYPE_BSV
 
     def __new__(cls, enum_value, external_display_value):
         obj = object.__new__(cls)
@@ -59,6 +63,8 @@ class Chain(Enum):
     mockchain = 3, BlockchainType.mock, CHAIN_MOCKCHAIN
     ethereum_mainnet = 4, BlockchainType.ethereum, CHAIN_ETHEREUM_MAINNET
     ethereum_ropsten = 5, BlockchainType.ethereum, CHAIN_ETHEREUM_ROPSTEN
+    bsv_mainnet = 0, BlockchainType.bsv, CHAIN_BSV_MAINNET
+    bsv_testnet = 1, BlockchainType.bsv, CHAIN_BSV_TESTNET
 
     def __new__(cls, enum_value, blockchain_type, external_display_value):
         obj = object.__new__(cls)
@@ -75,6 +81,10 @@ class Chain(Enum):
             return Chain.bitcoin_testnet
         elif chain_string == SYS_CHAIN_BITCOIN_REGTEST:
             return Chain.bitcoin_regtest
+        elif chain_string == SYS_CHAIN_BSV_TESTNET:
+            return Chain.bsv_testnet
+        elif chain_string == SYS_CHAIN_BSV_MAINNET:
+            return Chain.bsv_mainnet
         elif chain_string == SYS_CHAIN_MOCKCHAIN:
             return Chain.mockchain
         elif chain_string == SYS_CHAIN_ETHEREUM_MAINNET:
@@ -90,6 +100,10 @@ class Chain(Enum):
             return Chain.bitcoin_mainnet
         elif external_display_value == CHAIN_BITCOIN_TESTNET:
             return Chain.bitcoin_testnet
+        elif external_display_value == CHAIN_BSV_MAINNET:
+            return Chain.bsv_mainnet
+        elif external_display_value == CHAIN_BSV_TESTNET:
+            return Chain.bsv_testnet
         elif external_display_value == CHAIN_BITCOIN_REGTEST:
             return Chain.bitcoin_regtest
         elif external_display_value == CHAIN_MOCKCHAIN:
@@ -111,6 +125,10 @@ def chain_to_bitcoin_network(chain):
     if chain == Chain.bitcoin_mainnet:
         return SYS_NETWORK_BITCOIN_MAINNET
     elif chain == Chain.bitcoin_testnet:
+        return SYS_NETWORK_BITCOIN_TESTNET
+    elif chain == Chain.bsv_mainnet:
+        return SYS_NETWORK_BITCOIN_MAINNET
+    elif chain == Chain.bsv_testnet:
         return SYS_NETWORK_BITCOIN_TESTNET
     elif chain == Chain.bitcoin_regtest:
         return SYS_NETWORK_BITCOIN_REGTEST
