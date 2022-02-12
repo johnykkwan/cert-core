@@ -5,6 +5,8 @@ from enum import Enum
 CHAIN_BITCOIN_MAINNET = 'bitcoinMainnet'
 CHAIN_BITCOIN_REGTEST = 'bitcoinRegtest'
 CHAIN_BITCOIN_TESTNET = 'bitcoinTestnet'
+CHAIN_BSV_MAINNET = 'bsvMainnet'
+CHAIN_BSV_TESTNET = 'bsvTestnet'
 CHAIN_ETHEREUM_MAINNET = 'ethereumMainnet'
 CHAIN_ETHEREUM_ROPSTEN = 'ethereumRopsten'
 CHAIN_MOCKCHAIN = 'mockchain'
