@@ -63,8 +63,8 @@ class Chain(Enum):
     mockchain = 3, BlockchainType.mock, CHAIN_MOCKCHAIN
     ethereum_mainnet = 4, BlockchainType.ethereum, CHAIN_ETHEREUM_MAINNET
     ethereum_ropsten = 5, BlockchainType.ethereum, CHAIN_ETHEREUM_ROPSTEN
-    bsv_mainnet = 0, BlockchainType.bsv, CHAIN_BSV_MAINNET
-    bsv_testnet = 1, BlockchainType.bsv, CHAIN_BSV_TESTNET
+    bsv_mainnet = 6, BlockchainType.bsv, CHAIN_BSV_MAINNET
+    bsv_testnet = 7, BlockchainType.bsv, CHAIN_BSV_TESTNET
 
     def __new__(cls, enum_value, blockchain_type, external_display_value):
         obj = object.__new__(cls)
